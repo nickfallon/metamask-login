@@ -1,0 +1,63 @@
+<html>
+  <title>MetaMask login</title>
+  <script src="web3.min.js"></script>
+
+  <head> </head>
+
+  <body>
+    <h1>MetaMask login</h1>
+
+    <button onclick="login()">login with metamask</button>
+
+    <script>
+
+      async function login() {
+        // Modern dapp browsers...
+        if (window.ethereum) {
+          console.log(" Modern dapp browsers ");
+          window.web3 = new Web3(ethereum);
+          try {
+            // Request account access if needed
+            await ethereum.enable();
+            console.log(" Acccounts now exposed ");
+            // Acccounts now exposed
+
+            doAction();
+          } catch (error) {
+            console.log(error);
+            // User denied account access...
+          }
+        }
+        // Legacy dapp browsers...
+        else if (window.web3) {
+          consoe.log(" Legacy dapp browsers ");
+          window.web3 = new Web3(web3.currentProvider);
+          // Acccounts always exposed
+          consoe.log(" Acccounts always exposed ");
+
+          doAction();
+        }
+        // Non-dapp browsers...
+        else {
+          console.log(
+            "Non-Ethereum browser detected. You should consider trying MetaMask!"
+          );
+        }
+      }
+
+
+      function doAction() {
+        console.log("doAction.. ");
+        console.log(web3);
+
+        var accounts = web3.eth.getAccounts((error, result) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log(result);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
