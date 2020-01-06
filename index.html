@@ -30,10 +30,10 @@
         }
         // Legacy dapp browsers...
         else if (window.web3) {
-          consoe.log(" Legacy dapp browsers ");
+          console.log(" Legacy dapp browsers ");
           window.web3 = new Web3(web3.currentProvider);
           // Acccounts always exposed
-          consoe.log(" Acccounts always exposed ");
+          console.log(" Acccounts always exposed ");
 
           doAction();
         }
